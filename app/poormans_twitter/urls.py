@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from api import views
+from frontend import urls as frontend_urls
 
 router = routers.DefaultRouter()
 
 router.register(r'tweets', views.TweetViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', include(frontend_urls)),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

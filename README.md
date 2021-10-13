@@ -18,7 +18,9 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
-Then visit `http://localhost:8000/api/` to view the api.
+Then visit `http://localhost:8000/` to view Application.
+
+Visit `http://localhost:8000/api/` to view REST Api.
 
 
 ## Technical stack
@@ -38,14 +40,13 @@ requirements.txt should have the following three lines:
 ```
 django==3.2.8
 djangorestframework==3.12.4
-django-cors-headers==3.10.0
 ```
 
 
 ## Frontend
 
-Frontend source codes is located under '/frontend' folder. This application
-uses only one 'index.html'. You could open file from browser.
+Frontend source codes is located under '/frontend' folder. This is single page Application 
+and uses only one 'index.html'.
 
 
 ## Get involved!

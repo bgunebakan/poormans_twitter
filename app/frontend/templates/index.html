@@ -57,10 +57,10 @@
             <div class="col-md-6 mx-auto">
                 <div v-for="item in tweets" :key="item.id">
                     <div class="card">
-                    <h5 class="card-header">{{ item.name }}</h5>
+                    <h5 class="card-header">[[ item.name ]]</h5>
                     <div class="card-body">
-                        <h5 class="card-title">{{ item.tweet }}</h5>
-                        <p class="card-text">{{ item.created_at }}</p>
+                        <h5 class="card-title">[[ item.tweet ]]</h5>
+                        <p class="card-text">[[ item.created_at ]]</p>
                     </div>
                     </div>
                     <br>
@@ -72,6 +72,7 @@
 
       <script type = "text/javascript">
          var vue_det = new Vue({
+            delimiters: ["[[", "]]"],
             el: '#intro',
         
             name: "get-request-async-await",
@@ -94,7 +95,7 @@
                         headers: { "Content-Type": "application/json" },
                         body: data
                     };
-                    fetch("http://127.0.0.1:8000/api/tweets/", requestOptions)
+                    fetch("/api/tweets/", requestOptions)
                         .then(response => response.json())
                         .then(async response => {
                             this.name = '';
@@ -105,8 +106,9 @@
                             console.error('There was an error!', error);
                         });
                 },
+
                 async fetchTweets(){
-                    const response = await fetch("http://127.0.0.1:8000/api/tweets/")
+                    const response = await fetch("/api/tweets/")
                         .catch(error => {
                             console.error('There was an error!', error);
                         });
@@ -114,14 +116,11 @@
                     this.tweets = data;
                 },
             },
-        
+
             async created() {
                 this.fetchTweets();
             },
-            
          });
-            
-        
       </script>
    </body>
 </html>
